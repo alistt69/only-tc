@@ -1,0 +1,15 @@
+@forward 'consts';
+@forward 'normalize';
+
+body {
+  height: 100vh;
+  scroll-behavior: smooth;
+  background-color: #f4f5f9;
+  padding: 0 20px;
+  text-rendering: optimizeSpeed;
+}
+
+::selection {
+  background-color: #5d5fef;
+  color: #ef5da8;
+}

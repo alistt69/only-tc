@@ -1,0 +1,57 @@
+@use '@/styles/index';
+
+.main_layout {
+  position: relative;
+  max-width: 1440px;
+  padding-top: 15vh;
+  height: 100vh;
+  margin: 0 auto;
+  border: 1px solid index.$auxiliary-line-color;
+
+  .date_container {
+    display: flex;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    gap: 130px;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+
+    > h1 {
+      line-height: 160px;
+      font-size: 200px;
+      letter-spacing: -5px;
+    }
+
+    .date_from {
+      color: index.$blue-color;
+    }
+
+    .date_to {
+      color: index.$pink-color;
+    }
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: index.$auxiliary-line-color;
+  }
+
+  &::after {
+    height: 1px;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    top: 50%;
+  }
+
+  &::before {
+    width: 1px;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+  }
+}
