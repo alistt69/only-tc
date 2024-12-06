@@ -2,7 +2,7 @@ import { IDataBlock } from "@/data/model";
 
 export const Data: IDataBlock[] = [
     {
-        id: 1,
+        id: 0,
         name: "Технологии",
         objects: [
             { date: 1980, description: "Sinclair Research выпускает домашний компьютер ZX80." },
@@ -15,7 +15,7 @@ export const Data: IDataBlock[] = [
         ],
     },
     {
-        id: 2,
+        id: 1,
         name: "Кино",
         objects: [
             { date: 1987, description: "«Хищник»/Predator, США (реж. Джон Мактирнан)." },
@@ -26,7 +26,7 @@ export const Data: IDataBlock[] = [
         ],
     },
     {
-        id: 3,
+        id: 2,
         name: "Литература",
         objects: [
             { date: 1992, description: "Нобелевская премия по литературе — Дерек Уолкотт, «За блестящий образец Карибского эпоса в 64 разделах»." },
@@ -36,7 +36,7 @@ export const Data: IDataBlock[] = [
         ],
     },
     {
-        id: 4,
+        id: 3,
         name: "Театр",
         objects: [
             { date: 1999, description: "Премьера балета «Золушка» в постановке Жан-Кристофа Майо, сценография Эрнеста Пиньона." },
@@ -47,7 +47,7 @@ export const Data: IDataBlock[] = [
         ],
     },
     {
-        id: 5,
+        id: 4,
         name: "Спорт",
         objects: [
             { date: 2006, description: "Баскетбольный клуб ЦСКА стал победителем национального первенства России." },
@@ -58,7 +58,7 @@ export const Data: IDataBlock[] = [
         ],
     },
     {
-        id: 6,
+        id: 5,
         name: "Наука",
         objects: [
             { date: 2015, description: "13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды." },
