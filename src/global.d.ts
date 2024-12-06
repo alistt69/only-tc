@@ -17,3 +17,17 @@ declare module '*.svg' {
 }
 
 declare const __PLATFORM__: 'mobile' | 'desktop';
+
+declare module 'react-tooltip' {
+    import { Component, ReactNode } from 'react';
+
+    interface ReactTooltipProps {
+        id: string;
+        place?: 'top' | 'right' | 'bottom' | 'left';
+        effect?: 'float' | 'solid';
+        children?: ReactNode;
+    }
+
+    export class ReactTooltip extends Component<ReactTooltipProps> {}
+    export default ReactTooltip;
+}

@@ -1,0 +1,19 @@
+@use '@/styles/index';
+
+.nav_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  border: 1px solid index.$primary-line-color;
+  background-color: transparent;
+  margin-right: 16px;
+  margin-bottom: 60px;
+  transition: all .3s ease-in-out;
+
+  &.disable {
+    opacity: .4;
+  }
+}

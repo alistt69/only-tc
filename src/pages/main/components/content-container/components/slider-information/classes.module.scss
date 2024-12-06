@@ -1,0 +1,30 @@
+@use '@/styles/index';
+@import url('https://fonts.googleapis.com/css2?family=Bebas%20Neue:wght@400&display=swap');
+
+.slider_container {
+  height: 180px;
+  position: relative;
+
+  .information_card {
+    padding: 0 45px;
+
+    .date {
+      font-family: 'Bebas Neue', system-ui;
+      font-size: 20px;
+      line-height: 35px;
+      color: #3877EE;
+    }
+
+    .description {
+      font-family: 'Bebas Neue', system-ui;
+      margin-top: 15px;
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
+
+  div {
+    div:nth-of-type(2) {left: 0}
+    div:nth-of-type(3) {right: 0}
+  }
+}

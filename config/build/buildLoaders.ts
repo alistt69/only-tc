@@ -32,6 +32,22 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
         }],
     };
 
+    const cssLoader = {
+        test: /\.css$/,
+        use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: false
+                }
+            },
+            {
+                loader: 'postcss-loader'
+            }
+        ]
+    };
+
     const cssLoaderWithModules = {
         loader: "css-loader",
         options: {
@@ -71,10 +87,11 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
         }],
     };
 
-    const babelLoader = buildBabelLoader(options)
+    const babelLoader = buildBabelLoader(options);
 
     return [
         assetLoader,
+        cssLoader,
         scssLoader,
         // tsLoader,
         babelLoader,

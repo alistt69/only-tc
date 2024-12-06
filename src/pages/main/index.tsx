@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import classes from "./classes.module.scss";
-import Heading from "@/pages/main/components/heading";
 import { Data } from "@/data";
+import Date from "@/pages/main/components/date";
+import Heading from "@/pages/main/components/heading";
+import BlockCircleNavigation from "@/pages/main/components/block-circle-navigation";
+import ContentContainer from "@/pages/main/components/content-container";
+import classes from "./classes.module.scss";
+
 
 const Main = () => {
+
     const [selectedBlockId, setSelectedBlockId] = useState<number>(Data[0].id);
-    const [minBlockDate, setMinBlockDate] = useState<number>(0);
-    const [maxBlockDate, setMaxBlockDate] = useState<number>(0);
-
-    const handleBlockChange = (id: number) => {
-        setSelectedBlockId(id);
-    };
-
-    const selectedBlock = Data.find((block) => block.id === selectedBlockId);
+    const selectedBlock = Data.find((block) => block.id === selectedBlockId) || Data[0];
+    const [list, setList] = useState<number[]>([1, 2, 3, 4, 5, 6]);
 
     const getMinMaxDates = (objects: { date: number }[]) => {
         const dates = objects.map((obj) => obj.date);
@@ -22,6 +21,31 @@ const Main = () => {
             maxDate: Math.max(...dates),
         };
     };
+
+    const [minBlockDate, setMinBlockDate] = useState<number>(getMinMaxDates(Data[0].objects).minDate);
+    const [maxBlockDate, setMaxBlockDate] = useState<number>(getMinMaxDates(Data[0].objects).maxDate);
+
+    const shiftList = (shiftBy: number) => {
+        const length = list.length;
+        const normalizedShift = ((shiftBy % length) + length) % length;
+        const shiftedList = [
+            ...list.slice(length - normalizedShift),
+            ...list.slice(0, length - normalizedShift),
+        ];
+        setList(shiftedList);
+    };
+
+    const handleBlockChange = (id: number) => {
+        setSelectedBlockId(id);
+    };
+
+    useEffect(() => {
+        if (Data.length > 0) {
+            const { minDate, maxDate } = getMinMaxDates(Data[0].objects);
+            setMinBlockDate(minDate);
+            setMaxBlockDate(maxDate);
+        }
+    }, []);
 
     useEffect(() => {
         if (selectedBlock) {
@@ -49,43 +73,23 @@ const Main = () => {
         }
     }, [selectedBlock, minBlockDate, maxBlockDate]);
 
-    useEffect(() => {
-        if (Data.length > 0) {
-            const { minDate, maxDate } = getMinMaxDates(Data[0].objects);
-            setMinBlockDate(minDate);
-            setMaxBlockDate(maxDate);
-        }
-    }, []);
-
     return (
         <div className={classes.container}>
             <Heading />
-            <div className={classes.date_container}>
-                <h1 className={classes.date_from}>{minBlockDate}</h1>
-                <h1 className={classes.date_to}>{maxBlockDate}</h1>
-            </div>
-            <div>
-                <div>
-                    {Data.map((block) => (
-                        <button key={block.id} onClick={() => handleBlockChange(block.id)}>
-                            {block.name}
-                        </button>
-                    ))}
-                </div>
-                <div>
-                    {selectedBlock && (
-                        <ul>
-                            {selectedBlock.objects
-                                .sort((a, b) => a.date - b.date)
-                                .map((obj, index) => (
-                                    <li key={index}>
-                                        <strong>{obj.date}:</strong> {obj.description}
-                                    </li>
-                                ))}
-                        </ul>
-                    )}
-                </div>
-            </div>
+            <BlockCircleNavigation
+                selectedBlockId={selectedBlockId}
+                handleBlockChange={handleBlockChange}
+                shiftList={shiftList}
+                list={list}
+            />
+            <Date minBlockDate={minBlockDate}
+                  maxBlockDate={maxBlockDate}
+            />
+            <ContentContainer selectedBlockId={selectedBlockId}
+                              handleBlockChange={handleBlockChange}
+                              selectedBlock={selectedBlock}
+                              shiftList={shiftList}
+            />
         </div>
     );
 };

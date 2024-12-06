@@ -1,0 +1,23 @@
+@use '@/styles/index';
+
+.forward_arrow,
+.backward_arrow {
+  display: flex;
+  height: 35px;
+  width: 35px;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: #3877ee;
+  top: 47%;
+  background-color: #f4f5f9;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px rgba(187, 187, 187, 0.56);
+  transition: all .3s ease-in-out;
+
+  &.disabled {opacity: 0};
+  &.forward_arrow {right: -21px};
+  &.backward_arrow {left: 13px};
+}

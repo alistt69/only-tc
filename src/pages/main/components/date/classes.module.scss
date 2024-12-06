@@ -1,0 +1,22 @@
+@use '@/styles/index';
+
+.date_container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-50%);
+  gap: 110px;
+  top: 50%;
+  right: 0;
+  left: 0;
+  z-index: 1;
+
+  > h1 {
+    line-height: 160px;
+    font-size: 200px;
+    letter-spacing: -6px;
+  }
+
+  .date_from {color: index.$blue-color}
+  .date_to {color: index.$pink-color}
+}
