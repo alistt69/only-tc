@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
-import classes from "./classes.module.scss";
 import { Data } from "@/data";
+import classes from "./classes.module.scss";
 
 
 const BlockCircleNavigation: React.FC<{ selectedBlockId: number, handleBlockChange: (id: number) => void, list: number[], shiftList: (by: number) => void }> = ({ selectedBlockId, handleBlockChange, list, shiftList }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    console.log(hoveredIndex);
+
     useEffect(() => {
         const angle = (360 / Data.length) * (selectedBlockId + 1);
         gsap.to(`.${classes.rotating_circle}`, {
@@ -36,16 +36,11 @@ const BlockCircleNavigation: React.FC<{ selectedBlockId: number, handleBlockChan
                     };
 
                     return (
-                        <div
-                            key={item}
-                            style={{
+                        <div key={item} className={getClassName()} style={{
                                 transform: `translate(${x}px, ${y}px)`,
                                 position: 'absolute',
                                 top: '50%',
-                                left: '50%',
-                            }}
-                            className={getClassName()}
-                        >
+                                left: '50%'}}>
                             {item}
                             <h4 className={classes.block_name}>{Data[item - 1].name}</h4>
                         </div>

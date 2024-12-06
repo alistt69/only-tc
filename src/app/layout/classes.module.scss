@@ -32,3 +32,19 @@
     left: 50%;
   }
 }
+
+@media (max-width: 1300px) {
+  .main_layout {
+    padding-top: calc((1vw + .7vh) * 7.7);
+  }
+}
+
+@media (max-width: 870px) {
+  .main_layout {
+    border: none;
+    &::after,
+    &::before {
+      display: none;
+    }
+  }
+}

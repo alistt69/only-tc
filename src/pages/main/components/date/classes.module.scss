@@ -20,3 +20,26 @@
   .date_from {color: index.$blue-color}
   .date_to {color: index.$pink-color}
 }
+
+@media (max-width: 1300px) {
+  .date_container {
+    gap: calc(calc(.7vw + 1vh) * 6);
+    > h1 {
+      font-size: calc(calc(.7vw + 1vh) * 10);
+    }
+  }
+}
+
+@media (max-width: 870px) {
+  .date_container {
+    position: static;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 0;
+    transform: none;
+
+    > h1 {
+      font-size: calc(calc(3vw + 1vh) * 4);
+    }
+  }
+}

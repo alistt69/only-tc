@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas%20Neue:wght@400&display=swap');
 
 .slider_container {
-  height: 180px;
+  height: 200px;
   position: relative;
 
   .information_card {
     padding: 0 45px;
+    pointer-events: none;
 
     .date {
       font-family: 'Bebas Neue', system-ui;
@@ -26,5 +27,27 @@
   div {
     div:nth-of-type(2) {left: 0}
     div:nth-of-type(3) {right: 0}
+  }
+}
+
+@media (max-width: 700px) {
+  .slider_container {
+    padding-top: 20px;
+    border-top: 1px solid index.$primary-line-color;
+
+    .information_card {
+      padding: 0 5px;
+
+      .date {
+        line-height: 13px;
+        font-size: 17px;
+      }
+
+      .description {
+        line-height: 25px;
+        font-size: 15px;
+        height: 130px;
+      }
+    }
   }
 }

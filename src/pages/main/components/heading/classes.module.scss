@@ -17,3 +17,11 @@
     background-image: linear-gradient(to bottom, #3877EE, #EF5DA8);
   }
 }
+
+@media (max-width: 870px) {
+  .heading {
+    font-size: calc(calc(3vw + 1vh) * 1.5);
+    line-height: 8vw;
+    padding-left: 8vw;
+  }
+}

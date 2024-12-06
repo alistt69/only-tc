@@ -8,13 +8,18 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 
 const SliderInformation: React.FC<{ selectedBlock: IDataBlock, contentRef: LegacyRef<HTMLDivElement> | undefined }> = ({ selectedBlock, contentRef }) => {
 
+    const isMedium = useMediaQuery('(max-width: 1300px)');
     const [isBeginning, setIsBeginning] = useState<boolean>(true);
     const [isEnd, setIsEnd] = useState<boolean>(false);
     const swiperRef = useRef<SwiperClass | null>(null);
+    const swiperModules = []
+
+    isMedium ? swiperModules.push(Pagination) : swiperModules.push(Navigation)
 
     const handleSwiperInit = (swiper: SwiperClass): void => {
         swiperRef.current = swiper;
@@ -31,16 +36,16 @@ const SliderInformation: React.FC<{ selectedBlock: IDataBlock, contentRef: Legac
 
     return (
         <div className={classes.slider_container} ref={contentRef}>
-            <SliderNavigation isBeginning={isBeginning} isEnd={isEnd}/>
+            {!isMedium && <SliderNavigation isBeginning={isBeginning} isEnd={isEnd}/>}
             {selectedBlock && (
                 <Swiper
-                    modules={[ Navigation, /*Pagination*/ ]}
-                    slidesPerView={3}
+                    modules={swiperModules}
+                    slidesPerView={isMedium ? 1.2 : 3}
                     spaceBetween={1}
                     onInit={handleSwiperInit}
                     onSlideChange={handleSlideChange}
-                    navigation
-                    //pagination={{clickable: true}}
+                    navigation={!isMedium}
+                    pagination={{clickable: true}}
                 >
                     {selectedBlock.objects
                         .sort((a, b) => a.date - b.date)

@@ -1,3 +1,5 @@
+@use '@/styles/index';
+
 .info_container {
   margin: 0 70px;
 
@@ -7,5 +9,21 @@
     margin-bottom: 16px;
     font-size: 14px;
     line-height: 18.12px;
+  }
+}
+
+@media (max-width: 870px) {
+  .info_container {
+    display: inline-block;
+    margin: 0;
+
+    .pagination {
+      margin-bottom: 4px;
+    }
+
+    > strong {
+      display: block;
+      margin-bottom: 10px;
+    }
   }
 }
