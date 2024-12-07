@@ -1,0 +1,1 @@
+App starts building in dev build by "nmp start", in prod version: "npm run build:prod & npm start"
